@@ -1,0 +1,16 @@
+{
+  "name": "electron-smart-tv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "electron-prebuilt": "^0.36.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
