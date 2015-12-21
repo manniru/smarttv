@@ -1,1 +1,5 @@
-{}
+{
+    "settings": {
+        "defaultLocation": "https://github.com"
+    }
+}
