@@ -1,5 +1,5 @@
 var router = require('express').Router(),
-    getWindow = require('../../electron');
+    getWindow = require('../electron');
 
 router.get('/', function(req, res) {
     res.json({

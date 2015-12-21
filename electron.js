@@ -25,7 +25,7 @@ app.on('ready', function() {
   mainWindow = new BrowserWindow({fullscreen: true});
 
   // and load the index.html of the app.
-  mainWindow.loadURL(require('../server/storage').data.settings.defaultLocation);
+  mainWindow.loadURL(require('./storage').data.settings.defaultLocation);
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {

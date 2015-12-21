@@ -3,9 +3,9 @@ var fs = require('fs'),
     data;
 
 try {
-    data = require('../data.json');
+    data = require('./data.json');
 } catch(e) {
-    data = require('../data.default.json');
+    data = require('./data.default.json');
     save();
 }
 
@@ -14,7 +14,7 @@ exports.save = save;
 
 function save(cb) {
     return fs.writeFile(
-        path.join(__dirname, '../data.json'),
+        path.join(__dirname, 'data.json'),
         JSON.stringify(data),
         cb
     );
