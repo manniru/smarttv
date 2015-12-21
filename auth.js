@@ -18,7 +18,7 @@ function isAuthenticated(req, res, next) {
 }
 
 function createToken(cb) {
-    jwt.sign({}, secret, {expiresInMinutes: 60}, cb);
+    jwt.sign({}, secret, {expiresIn: '10m'}, cb);
 }
 
 function verifyToken(token, cb) {

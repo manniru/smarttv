@@ -7,16 +7,14 @@ var router = require('express').Router(),
 router.post('/login', function(req, res) {
     bcrypt.compare(req.body.password, storage.password, function(err, valid) {
         if (valid) {
-            auth.createToken(function(err, token) {
-                if (err) {
-                    return res.send(500, err);
-                }
-                return res.json({
+            auth.createToken(function(token) {
+                res.json({
                     token: token
                 });
             });
+        } else {
+            res.sendStatus(401);
         }
-        return res.sendStatus(401);
     });
 });
 
