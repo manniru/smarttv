@@ -9,4 +9,6 @@ app.get('/', function(req, res) {
     res.send('<h1>Hello world!</h1>');
 });
 
-app.listen(process.env.port || 8000);
+var port = process.env.port || 8000;
+console.log('app is listening on port ' + port);
+app.listen(port);
