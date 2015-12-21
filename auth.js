@@ -9,12 +9,13 @@ function isAuthenticated(req, res, next) {
     if (req.headers.authorization) {
         verifyToken(req.headers.authorization.split(' ')[1], function(err) {
             if (err) {
-                res.send(500, err);
+                res.status(500).send(err);
             } else {
-                next(req, res);
+                next();
             }
         });
     }
+    else res.sendStatus(401);
 }
 
 function createToken(cb) {
