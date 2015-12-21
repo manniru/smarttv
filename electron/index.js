@@ -35,3 +35,7 @@ app.on('ready', function() {
     mainWindow = null;
   });
 });
+
+module.exports = function() {
+    return mainWindow;
+};
