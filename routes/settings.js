@@ -6,8 +6,8 @@ router.get('/', function(req, res) {
     return res.json(storage.data.settings);
 });
 
-router.put('/', isAuthenticated, function(req, res) {
-    storage.data.settings = req.body;
+router.put('/defaultLocation', isAuthenticated, function(req, res) {
+    storage.data.settings.defaultLocation = req.body.defaultLocation;
     storage.save(function(err) {
         if (err) {
             res.status(500).json(err);
