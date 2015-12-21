@@ -5,7 +5,7 @@ var router = require('express').Router(),
     secret = process.env.SMART_TV_SECRET || 'smart-tv-secret';
 
 router.post('/login', function(req, res) {
-    bcrypt.compare(req.body.password, storage.password, function(err, valid) {
+    auth.checkPassword(req.body.password, function(err, valid) {
         if (valid) {
             auth.createToken(function(token) {
                 res.json({

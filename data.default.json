@@ -1,6 +1,4 @@
 {
-    "settings": {
-        "defaultLocation": "https://github.com"
-    },
+    "defaultLocation": "https://github.com",
     "password": "$2a$10$mXTiISgxlVeSewcZKmBl5.T1yUwJI.9rzK1UKgwbwzqdA1oyBfBiS"
 }
