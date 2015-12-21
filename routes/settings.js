@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
 });
 
 router.put('/defaultLocation', auth.isAuthenticated, function(req, res) {
-    storage.data.settings.defaultLocation = req.body.defaultLocation;
+    storage.data.defaultLocation = req.body.defaultLocation;
     storage.save(function(err) {
         if (err) {
             res.status(500).json(err);

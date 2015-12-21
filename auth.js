@@ -1,4 +1,5 @@
 var jwt = require('jsonwebtoken'),
+    bcrypt = require('bcrypt'),
     storage = require('./storage'),
     secret = process.env.SMART_TV_SECRET || 'smart-tv-secret';
 
