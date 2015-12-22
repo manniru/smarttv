@@ -8,8 +8,8 @@ router.get('/', function(req, res) {
     return res.json(copy);
 });
 
-router.put('/defaultLocation', auth.isAuthenticated, function(req, res) {
-    storage.data.defaultLocation = req.body.defaultLocation;
+router.put('/mainApp', auth.isAuthenticated, function(req, res) {
+    storage.data.mainApp = req.body.mainApp;
     storage.save(function(err) {
         if (err) {
             res.status(500).json(err);
