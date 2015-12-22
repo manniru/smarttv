@@ -1,5 +1,6 @@
 var fs = require('fs'),
     path = require('path'),
+    storage = require('./storage');
     apps = {};
 
 // Loop through node_modules searching for apps with smarttv.json
@@ -11,5 +12,7 @@ modules.forEach(function(mod) {
         apps[mod] = require(path.join(npmDir, mod, 'smarttv.json'));
     }
 });
+
+storage.data.currentApp = storage.data.mainApp;
 
 module.exports = apps;

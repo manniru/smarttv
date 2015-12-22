@@ -1,4 +1,5 @@
 require('./electron');
+require('./apps');
 var express = require('express'),
     app = express();
 
