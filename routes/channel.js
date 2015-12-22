@@ -1,14 +1,14 @@
 var router = require('express').Router(),
-    storage = require('../storage');
+    apps = require('../apps');
 
 router.get('/', function(req, res) {
     res.json({
-        app: storage.data.currentApp
+        app: apps.getCurrent()
     });
 });
 
 router.post('/', function(req, res) {
-    storage.data.currentApp = req.body.currentApp;
+    apps.show(req.body.app);
     res.sendStatus(200);
 });
 
