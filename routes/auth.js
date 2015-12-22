@@ -1,7 +1,6 @@
 var router = require('express').Router(),
     bcrypt = require('bcrypt'),
     auth = require('../auth'),
-    storage = require('../storage').data,
     secret = process.env.SMART_TV_SECRET || 'smart-tv-secret';
 
 router.post('/login', function(req, res) {

@@ -25,9 +25,6 @@ app.on('ready', function() {
   // Create the browser window.
   mainWindow = new BrowserWindow({fullscreen: true});
 
-  // and load the index.html of the app.
-  mainWindow.loadURL(require('./storage').data.defaultLocation);
-
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
     // Dereference the window object, usually you would store windows
