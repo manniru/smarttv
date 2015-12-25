@@ -10,6 +10,7 @@
     "express": "^4.13.3",
     "jsonwebtoken": "^5.4.1",
     "lowdb": "^0.11.1",
+    "smarttv-menu": "git+https://github.com/mariolamacchia/smarttv-menu.git",
     "socketio": "^1.0.0"
   },
   "devDependencies": {},

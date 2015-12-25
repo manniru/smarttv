@@ -1,7 +1,7 @@
-const low = require('lowdb').
-const storage = require('lowdb/file-async')
+const low = require('lowdb');
+const storage = require('lowdb/file-async');
 
-const db = low('db.json', { storage })
+const db = low('db.json', { storage });
 
 if (!db.object.$) {
     db.object.$ = {};
