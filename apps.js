@@ -22,7 +22,10 @@ exports.getCurrent = getCurrent;
 
 function showApp(app) {
     storage.data.currentApp = app;
-    mainWindow.loadURL(apps[app].tv);
+    mainWindow.loadURL(
+        apps[app].url ||
+        'file://' + path.join(__dirname, 'node_modules', app, 'index.html')
+    );
 }
 
 function getCurrent() {
