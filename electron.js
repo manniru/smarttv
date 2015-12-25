@@ -1,4 +1,5 @@
 const electron = require('electron');
+const config = require('./config');
 const app = electron.app;  // Module to control application life.
 const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
 
@@ -26,6 +27,10 @@ app.on('ready', function() {
 
   if (typeof exports.onReady === 'function') {
       exports.onReady();
+  }
+
+  if (config.debug) {
+      exports.mainWindow.openDevTools();
   }
 
   // Emitted when the window is closed.

@@ -10,7 +10,9 @@ var modules = fs.readdirSync(npmDir);
 modules.forEach(function(mod) {
     var ls = fs.readdirSync(path.join(npmDir, mod));
     if (ls.indexOf('smarttv.json') !== -1) {
-        apps[mod] = require(path.join(npmDir, mod, 'smarttv.json'));
+        apps[mod.replace(/^smarttv-/, '')] = require(
+            path.join(npmDir, mod, 'smarttv.json')
+        );
     }
 });
 
@@ -26,7 +28,12 @@ function showApp(app) {
     storage.data.currentApp = app;
     electron.mainWindow.loadURL(
         apps[app].url ||
-        'file://' + path.join(__dirname, 'node_modules', app, 'index.html')
+        'file://' + path.join(
+            __dirname,
+            'node_modules',
+            'smarttv-' + app,
+            'index.html'
+        )
     );
 }
 
