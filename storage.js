@@ -1,21 +1,13 @@
-var fs = require('fs'),
-    path = require('path'),
-    data;
+const low = require('lowdb').
+const storage = require('lowdb/file-async')
 
-try {
-    data = require('./data.json');
-} catch(e) {
-    data = require('./data.default.json');
-    save();
+const db = low('db.json', { storage })
+
+if (!db.object.$) {
+    db.object.$ = {};
 }
 
-exports.data = data;
-exports.save = save;
+db.data = db.object.$;
+db.save = db.write;
 
-function save(cb) {
-    return fs.writeFile(
-        path.join(__dirname, 'data.json'),
-        JSON.stringify(data),
-        cb
-    );
-}
+module.exports = db;

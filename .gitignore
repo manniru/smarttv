@@ -1,5 +1,3 @@
 node_modules/
-server/storage.json
-data.json
 *.log
 .log
