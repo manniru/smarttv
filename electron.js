@@ -1,4 +1,3 @@
-try{
 const electron = require('electron');
 const app = electron.app;  // Module to control application life.
 const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
@@ -37,5 +36,3 @@ app.on('ready', function() {
 module.exports = function() {
     return mainWindow;
 };
-
-}catch(e){module.exports = function(){}}
