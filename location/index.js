@@ -1,5 +1,5 @@
 var router = require('express').Router(),
-    getWindow = require('../../electron');
+    electron = require('../../electron');
 
 router.get('/', function(req, res) {
     res.json({
@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
 });
 
 router.put('/', function(req, res) {
-    getWindow().loadURL(req.body.location);
+    electron.mainWindow.loadURL(req.body.location);
     res.sendStatus(200);
 });
 

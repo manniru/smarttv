@@ -1,7 +1,7 @@
 var fs = require('fs'),
     path = require('path'),
     storage = require('./storage'),
-    mainWindow = require('./electron')(),
+    electron = require('./electron'),
     apps = {};
 
 // Loop through node_modules searching for apps with smarttv.json
@@ -14,7 +14,9 @@ modules.forEach(function(mod) {
     }
 });
 
-showApp(storage.data.mainApp);
+electron.onReady = function() {
+    showApp(storage.data.mainApp);
+};
 
 exports.list = apps;
 exports.show = showApp;
@@ -22,7 +24,7 @@ exports.getCurrent = getCurrent;
 
 function showApp(app) {
     storage.data.currentApp = app;
-    mainWindow.loadURL(
+    electron.mainWindow.loadURL(
         apps[app].url ||
         'file://' + path.join(__dirname, 'node_modules', app, 'index.html')
     );

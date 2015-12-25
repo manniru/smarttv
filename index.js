@@ -1,5 +1,6 @@
 require('./electron');
-var express = require('express'),
+var path = require('path'),
+    express = require('express'),
     server = require('http').Server(app),
     io = require('socket.io')(server),
     config = require('./config'),

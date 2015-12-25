@@ -7,7 +7,7 @@ electron.crashReporter.start();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-var mainWindow = null;
+exports.mainWindow = null;
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
@@ -22,17 +22,17 @@ app.on('window-all-closed', function() {
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({fullscreen: true});
+  exports.mainWindow = new BrowserWindow({fullscreen: true});
+
+  if (typeof exports.onReady === 'function') {
+      exports.onReady();
+  }
 
   // Emitted when the window is closed.
-  mainWindow.on('closed', function() {
+  exports.mainWindow.on('closed', function() {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    mainWindow = null;
+    exports.mainWindow = null;
   });
 });
-
-module.exports = function() {
-    return mainWindow;
-};
