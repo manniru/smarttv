@@ -3,7 +3,6 @@ var path = require('path'),
     express = require('express'),
     server = require('http').Server(app),
     io = require('socket.io')(server),
-    config = require('./config'),
     apps = require('./apps'),
     app = express();
 
@@ -15,7 +14,7 @@ app.use(express.static(path.join(
 app.use('/api', require('./routes'));
 
 
-var port = config.port;
+var port = process.env.npm_config_port;
 console.log('app is listening on port ' + port);
 app.listen(port);
 
