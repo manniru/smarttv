@@ -14,7 +14,7 @@ app.use(express.static(path.join(
 app.use('/api', require('./routes'));
 
 
-var port = process.env.npm_config_port;
+var port = process.env.npm_config_port || 8000;
 console.log('app is listening on port ' + port);
 app.listen(port);
 

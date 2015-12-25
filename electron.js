@@ -22,7 +22,9 @@ app.on('window-all-closed', function() {
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
   // Create the browser window.
-  exports.mainWindow = new BrowserWindow({fullscreen: true});
+  exports.mainWindow = new BrowserWindow({
+      fullscreen: !process.env.npm_config_no_fullscreen
+  });
 
   if (typeof exports.onReady === 'function') {
       exports.onReady();
