@@ -23,15 +23,15 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
   // Create the browser window.
   exports.mainWindow = new BrowserWindow({
-      fullscreen: !process.env.npm_config_no_fullscreen
+      fullscreen: !process.env.npm_config_debug
   });
-
-  if (typeof exports.onReady === 'function') {
-      exports.onReady();
-  }
 
   if (process.env.npm_config_debug) {
       exports.mainWindow.openDevTools();
+  }
+
+  if (typeof exports.onReady === 'function') {
+      exports.onReady();
   }
 
   // Emitted when the window is closed.
