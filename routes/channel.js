@@ -16,4 +16,9 @@ router.put('/', function(req, res) {
     }
 });
 
+router.delete('/', function(req, res) {
+    apps.show(apps.getMain());
+    res.sendStatus(200);
+});
+
 module.exports = router;

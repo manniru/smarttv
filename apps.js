@@ -24,6 +24,7 @@ electron.onReady = function() {
 exports.list = apps;
 exports.show = showApp;
 exports.getCurrent = getCurrent;
+exports.getMain = getMain;
 
 function showApp(app) {
     currentApp = app;
@@ -40,4 +41,8 @@ function showApp(app) {
 
 function getCurrent() {
     return currentApp;
+}
+
+function getMain() {
+    return process.env.npm_package_config_main_app;
 }
