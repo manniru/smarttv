@@ -7,9 +7,13 @@ router.get('/', function(req, res) {
     });
 });
 
-router.post('/', function(req, res) {
-    apps.show(req.body.app);
-    res.sendStatus(200);
+router.put('/', function(req, res) {
+    if (apps.list[req.body.app]) {
+        apps.show(req.body.app);
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(404);
+    }
 });
 
 module.exports = router;
