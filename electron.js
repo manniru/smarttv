@@ -31,7 +31,7 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
   // Create the browser window.
   exports.mainWindow = new BrowserWindow({
-      fullscreen: !process.env.npm_config_windowed
+      fullscreen: !process.env.npm_config_w
   });
 
   if (process.env.npm_config_dev_tools) {
