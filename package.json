@@ -18,7 +18,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron index.js",
     "api": "node index.js",
-    "help": "cat HELP.md"
+    "help": "node help.js"
   },
   "author": "",
   "license": "ISC"
