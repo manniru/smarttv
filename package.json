@@ -1,6 +1,6 @@
 {
-  "name": "electron-smart-tv",
-  "version": "1.0.0",
+  "name": "smarttv",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
