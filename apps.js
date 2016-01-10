@@ -6,14 +6,26 @@ var fs = require('fs'),
 var currentApp = process.env.npm_package_config_main_app;
 
 // Loop through node_modules searching for apps with smarttv.json
-var npmDir = path.join(__dirname, 'node_modules');
-var modules = fs.readdirSync(npmDir);
+var home = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+var appDir = home + '/.smarttv/apps';
+try{
+  console.log('Loading apps...');
+  var modules = fs.readdirSync(appDir);
+} catch(e) {
+  console.log('.smarttv/apps/ dir not found, creating...');
+  try {
+    fs.mkdirSync(home + '/.smarttv');
+  } catch(e) {}
+  try {
+    fs.mkdirSync(appDir);
+  } catch(e) {}
+  var modules = fs.readdirSync(appDir);
+}
 modules.forEach(function(mod) {
-    var ls = fs.readdirSync(path.join(npmDir, mod));
+    var ls = fs.readdirSync(path.join(appDir, mod));
     if (ls.indexOf('smarttv.json') !== -1) {
-        apps[mod.replace(/^smarttv-/, '')] = require(
-            path.join(npmDir, mod, 'smarttv.json')
-        );
+        var app = require(path.join(appDir, mod, 'smarttv.json'));
+        apps[mod] = app;
     }
 });
 
@@ -30,12 +42,7 @@ function showApp(app) {
     currentApp = app;
     electron.mainWindow.loadURL(
         apps[app].url ||
-        'file://' + path.join(
-            __dirname,
-            'node_modules',
-            'smarttv-' + app,
-            'index.html'
-        )
+        'file://' + path.join(appDir, app, 'index.html')
     );
 }
 

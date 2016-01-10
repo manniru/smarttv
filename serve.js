@@ -6,12 +6,11 @@ var apps = require('./apps');
 router.get('/', function(req, res) {
     if (apps.getMain() !== apps.getCurrent()) {
       script = 'history.replaceState({}, \'' + apps.getMain() +
-        '\',  \'/smarttv-' + apps.getMain() + '/\');' +
-        'setTimeout(function() {window.location.href = \'/smarttv-' +
+        '\',  \'/' + apps.getMain() + '/\');' +
+        'setTimeout(function() {window.location.href = \'/' +
         apps.getCurrent() + '\';}, 0);';
     } else {
-      script = 'window.location.replace(\'/smarttv-' +
-        apps.getMain() + '\');';
+      script = 'window.location.replace(\'/' + apps.getMain() + '\');';
     }
     res.status(200).send('<script>' + script + '</script>');
 });
@@ -23,7 +22,7 @@ router.use(function(req, res, next) {
 });
 // Show app
 router.use(function(req, res, next) {
-    var match = req.path.match(/^\/smarttv-([^\/]+)/);
+    var match = req.path.match(/^\/([^\/]+)/);
     if (match && match[1]) {
       var name = match[1];
       if (apps.list[name]) {
@@ -40,12 +39,14 @@ router.use(function(req, res, next) {
 });
 // Redirect to /client
 router.use(function(req, res, next) {
-  if (!req.path.startsWith('/smarttv-' + apps.getCurrent() + '/client/')) {
-    res.redirect('/smarttv-' + apps.getCurrent() + '/client/');
+  if (!req.path.startsWith('/' + apps.getCurrent() + '/client/')) {
+    res.redirect('/' + apps.getCurrent() + '/client/');
   } else {
     next();
   }
 });
-router.use(express.static(__dirname + '/node_modules'));
+var home = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+var appDir = home + '/.smarttv/apps';
+router.use(express.static(appDir));
 
 module.exports = router;
