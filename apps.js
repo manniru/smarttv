@@ -30,9 +30,16 @@ modules.forEach(function(mod) {
   }
 });
 
-exports.list = apps;
+var list = [];
+for (var app in apps) {
+  apps[app].name = app;
+  list.push(apps[app]);
+}
+
+exports.list = list;
 exports.getCurrent = getCurrent;
 exports.setCurrent = setCurrent;
+exports.get = get;
 exports.getMain = getMain;
 exports.dir = appsDir;
 
@@ -46,4 +53,8 @@ function setCurrent(app) {
 
 function getMain() {
   return process.env.npm_package_config_main_app;
+}
+
+function get(app) {
+  return apps[app];
 }

@@ -26,7 +26,7 @@ router.use(function(req, res, next) {
     var match = req.path.match(/^\/([^\/]+)/);
     if (match && match[1]) {
       var name = match[1];
-      if (apps.list[name]) {
+      if (apps.get(name)) {
         if (apps.getCurrent() !== name) {
           webapp.showApp(name);
         }

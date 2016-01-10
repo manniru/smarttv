@@ -45,7 +45,7 @@ exports.showApp = showApp;
 function showApp(app) {
   apps.setCurrent(app);
   exports.mainWindow.loadURL(
-    apps.list[app].url ||
+    apps.get(app).url ||
     'file://' + apps.dir + '/' +  app  + '/index.html'
   );
 }
