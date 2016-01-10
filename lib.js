@@ -9,7 +9,7 @@ exports.apps = {
 
 exports.send = send;
 exports.on = function() {
-  ipcRenderer.on.apply(icpRenderer, arguments);
+  ipcRenderer.on.apply(ipcRenderer, arguments);
 };
 
 function send(dest, mex) {
