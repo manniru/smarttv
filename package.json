@@ -2,7 +2,7 @@
   "name": "smarttv",
   "version": "0.1.2",
   "description": "",
-  "main": "index.js",
+  "main": "lib.js",
   "dependencies": {
     "body-parser": "^1.14.2",
     "electron-prebuilt": "^0.36.1",
@@ -17,9 +17,9 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron index.js",
-    "api": "node index.js",
-    "help": "node help.js",
+    "start": "electron webapp/index.js",
+    "api": "node webapp/index.js",
+    "help": "node webapp/help.js",
     "postinstall": "bower install"
   },
   "author": "",
