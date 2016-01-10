@@ -1,4 +1,4 @@
-require('./electron');
+require('./webapp');
 var path = require('path'),
     express = require('express'),
     apps = require('./apps'),

@@ -1,6 +1,6 @@
 var fs = require('fs'),
     path = require('path'),
-    electron = require('./electron'),
+    electron = require('./webapp'),
     apps = {};
 
 var currentApp = process.env.npm_package_config_main_app;

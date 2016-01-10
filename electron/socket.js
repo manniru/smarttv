@@ -15,7 +15,7 @@ try {
 
 module.exports = function(app, server) {
   var io = require('socket.io')(server);
-  var electron = require('./electron');
+  var electron = require('./webapp');
   var clients = {};
 
   io.on('connection', function(socket) {
