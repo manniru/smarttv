@@ -37,7 +37,7 @@ app.on('ready', function() {
       fullscreen: !process.env.npm_config_w
   });
 
-  if (process.env.npm_config_dev_tools) {
+  if (process.env.npm_config_dev) {
       exports.mainWindow.openDevTools();
   }
 
