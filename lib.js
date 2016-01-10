@@ -8,7 +8,9 @@ exports.apps = {
 };
 
 exports.send = send;
-exports.on = ipcRenderer.on;
+exports.on = function() {
+  ipcRenderer.on.apply(icpRenderer, arguments);
+};
 
 function send(dest, mex) {
   if (typeof mex === 'undefined') {
