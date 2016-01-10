@@ -17,6 +17,6 @@ function send(dest, mex) {
     mex = dest;
     ipcRenderer.send('public', mex);
   } else {
-    ipcRenderer.send('public', dest, mex);
+    ipcRenderer.send('private', dest, mex);
   }
 }
