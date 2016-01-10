@@ -2,7 +2,10 @@ try {
     var electron = require('electron');
 } catch(e) {
     exports.mainWindow = {
-        loadURL: function() {}
+        loadURL: function() {},
+        webContents: {
+          send: function() {}
+        }
     };
     return;
 }
