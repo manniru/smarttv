@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var apps = require('./apps');
+var apps = require('../apps');
+var webapp = require('./webapp');
 
 // Serve apps
 router.get('/', function(req, res) {
@@ -27,7 +28,7 @@ router.use(function(req, res, next) {
       var name = match[1];
       if (apps.list[name]) {
         if (apps.getCurrent() !== name) {
-          apps.show(name);
+          webapp.showApp(name);
         }
         next();
       } else {

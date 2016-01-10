@@ -1,7 +1,7 @@
+require('../apps');
 require('./webapp');
 var path = require('path'),
     express = require('express'),
-    apps = require('./apps'),
     app = express();
 
 app.use(require('body-parser').json());

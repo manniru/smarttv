@@ -1,55 +1,51 @@
+var apps = require('../apps');
+
 try {
-    var electron = require('electron');
+  var electron = require('electron');
 } catch(e) {
-    exports.mainWindow = {
-        loadURL: function() {},
-        webContents: {
-          send: function() {}
-        }
-    };
-    return;
+  exports.mainWindow = {
+    loadURL: function() {},
+    webContents: {
+      send: function() {}
+    },
+    showApp: function(app) {
+      apps.setCurrent(app);
+    }
+  };
+  return;
 }
 
-var app = electron.app;  // Module to control application life.
-var BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
+var app = electron.app;
+var BrowserWindow = electron.BrowserWindow;
 
-// Report crashes to our server.
-electron.crashReporter.start();
-
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-exports.mainWindow = null;
-
-// Quit when all windows are closed.
 app.on('window-all-closed', function() {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform != 'darwin') {
     app.quit();
   }
 });
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
 app.on('ready', function() {
-  // Create the browser window.
   exports.mainWindow = new BrowserWindow({
-      fullscreen: !process.env.npm_config_w
+    fullscreen: !process.env.npm_config_w
   });
 
   if (process.env.npm_config_dev) {
-      exports.mainWindow.openDevTools();
+    exports.mainWindow.openDevTools();
   }
 
-  if (typeof exports.onReady === 'function') {
-      exports.onReady();
-  }
+  showApp(apps.getCurrent());
 
-  // Emitted when the window is closed.
   exports.mainWindow.on('closed', function() {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
     exports.mainWindow = null;
   });
 });
+
+exports.showApp = showApp;
+
+function showApp(app) {
+  apps.setCurrent(app);
+  exports.mainWindow.loadURL(
+    apps.list[app].url ||
+    'file://' + apps.dir + '/' +  app  + '/index.html'
+  );
+}
