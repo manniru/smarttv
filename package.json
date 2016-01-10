@@ -7,8 +7,6 @@
     "body-parser": "^1.14.2",
     "electron-prebuilt": "^0.36.1",
     "express": "^4.13.3",
-    "smarttv-menu": "git+https://github.com/mariolamacchia/smarttv-menu.git",
-    "smarttv-youtube": "git+https://github.com/mariolamacchia/smarttv-youtube.git",
     "socketio": "^1.0.0"
   },
   "config": {
