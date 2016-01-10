@@ -14,7 +14,6 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron electron/index.js",
     "api": "node electron/index.js",
     "help": "node electron/help.js",
@@ -22,8 +21,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mariolamacchia/smarttv"
+    "url": "https://github.com/mariolamacchia/smarttv.git"
   },
+  "bugs": {
+    "url": "https://github.com/mariolamacchia/smarttv/issues"
+  },
+  "keywords": [
+    "smarttv",
+    "smart-tv",
+    "electron",
+    "tv"
+  ],
   "author": "Mario Lamacchia <mariolamacchia@gmail.com>",
   "license": "ISC"
 }
