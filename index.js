@@ -18,6 +18,8 @@ app.use(function(req, res, next) {
 
 app.use('/api', require('./routes'));
 
+app.use('/assets', express.static(__dirname + '/bower_components'));
+
 // Serve apps
 app.get('/', function(req, res) {
     res.redirect('/smarttv-' + apps.getCurrent() + '/client/');
