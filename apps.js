@@ -23,11 +23,13 @@ try{
 }
 
 modules.forEach(function(mod) {
-  var ls = fs.readdirSync(path.join(appsDir, mod));
-  if (ls.indexOf('smarttv.json') !== -1) {
-    var app = require(path.join(appsDir, mod, 'smarttv.json'));
-    apps[mod] = app;
-  }
+  try {
+    var ls = fs.readdirSync(path.join(appsDir, mod));
+    if (ls.indexOf('smarttv.json') !== -1) {
+      var app = require(path.join(appsDir, mod, 'smarttv.json'));
+      apps[mod] = app;
+    }
+  } catch(e) {}
 });
 
 var list = [];
