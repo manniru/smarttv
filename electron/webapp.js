@@ -3,7 +3,7 @@ var apps = require('../apps');
 try {
   var electron = require('electron');
 } catch(e) {
-  exports.mainWindow = {
+  mainWindow = {
     loadURL: function() {},
     webContents: {
       send: function() {}
@@ -17,6 +17,7 @@ try {
 
 var app = electron.app;
 var BrowserWindow = electron.BrowserWindow;
+var mainWindow;
 
 app.on('window-all-closed', function() {
   if (process.platform != 'darwin') {
@@ -25,26 +26,36 @@ app.on('window-all-closed', function() {
 });
 
 app.on('ready', function() {
-  exports.mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     fullscreen: !process.env.npm_config_w
   });
 
   if (process.env.npm_config_dev) {
-    exports.mainWindow.openDevTools();
+    mainWindow.openDevTools();
   }
 
   showApp(apps.getCurrent());
 
-  exports.mainWindow.on('closed', function() {
-    exports.mainWindow = null;
+  mainWindow.on('closed', function() {
+    mainWindow = null;
   });
 });
 
 exports.showApp = showApp;
+exports.input = input;
+exports.send = send;
+
+function input() {
+  mainWindow.webContents.sendInputEvent.apply(mainWindow.webContents, arguments);
+}
+
+function send() {
+  mainWindow.webContents.send.apply(mainWindow.webContents, arguments);
+}
 
 function showApp(app) {
   apps.setCurrent(app);
-  exports.mainWindow.loadURL(
+  mainWindow.loadURL(
     apps.get(app).url ||
     'file://' + apps.dir + '/' +  app  + '/index.html'
   );

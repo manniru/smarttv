@@ -6,11 +6,11 @@
 
   // Socket
   var socket = io.connect('/');
-  smarttv.send = function() {
-    socket.emit.apply(socket, arguments);
+  smarttv.send = function(msg) {
+    socket.emit('message', msg);
   };
-  smarttv.on = function() {
-    socket.on.apply(socket, arguments);
+  smarttv.on = function(c, fn) {
+    socket.on(c, fn);
   };
 
   // Apps

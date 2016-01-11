@@ -1,19 +1,19 @@
+var apps = require('./apps');
 var electron = require('electron');
 var ipcRenderer = electron.ipcRenderer;
-var apps = require('./apps');
 
 exports.apps = {
   list: apps.list,
   dir: apps.dir
 };
-
 exports.send = send;
-exports.on = function(channel, fn) {
+exports.on = on;
+
+function on(channel, fn) {
   ipcRenderer.on(channel, function() {
-    fn.apply(this, arguments.slice(1));
+    fn.apply(this, Array.prototype.slice.call(arguments, 1));
   });
-  ipcRenderer.on.apply(ipcRenderer, arguments);
-};
+}
 
 function send(dest, mex) {
   if (typeof mex === 'undefined') {
