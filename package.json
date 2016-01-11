@@ -16,8 +16,7 @@
   "scripts": {
     "start": "electron electron/index.js",
     "api": "node electron/index.js",
-    "help": "node electron/help.js",
-    "postinstall": "bower install"
+    "help": "node electron/help.js"
   },
   "repository": {
     "type": "git",
