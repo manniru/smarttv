@@ -8,7 +8,10 @@ exports.apps = {
 };
 
 exports.send = send;
-exports.on = function() {
+exports.on = function(channel, fn) {
+  ipcRenderer.on(channel, function() {
+    fn.apply(this, arguments.slice(1));
+  });
   ipcRenderer.on.apply(ipcRenderer, arguments);
 };
 

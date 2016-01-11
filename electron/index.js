@@ -13,6 +13,9 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.get('/smarttv.js', function(req, res) {
+  res.sendFile(path.resolve(__dirname + '/../lib-cli.js'));
+});
 app.use('/api', require('./routes'));
 app.use('/assets', express.static(__dirname + '/bower_components'));
 app.use(require('./serve'));
