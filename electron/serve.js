@@ -23,24 +23,29 @@ router.use(function(req, res, next) {
 });
 // Show app
 router.use(function(req, res, next) {
-    var match = req.path.match(/^\/([^\/]+)/);
-    if (match && match[1]) {
-      var name = match[1];
-      if (apps.get(name)) {
-        if (apps.getCurrent() !== name) {
-          webapp.showApp(name);
-        }
-        next();
-      } else {
-        res.sendStatus(404);
+  // Ignore public files
+  if (req.path.match(/^\/[^\/]+\/public/)) {
+    return next();
+  }
+
+  var match = req.path.match(/^\/([^\/]+)/);
+  if (match && match[1]) {
+    var name = match[1];
+    if (apps.get(name)) {
+      if (apps.getCurrent() !== name) {
+        webapp.showApp(name);
       }
+      next();
     } else {
       res.sendStatus(404);
     }
+  } else {
+    res.sendStatus(404);
+  }
 });
 // Redirect to /client
 router.use(function(req, res, next) {
-  if (!req.path.startsWith('/' + apps.getCurrent() + '/client/')) {
+  if (!req.path.match(/^\/[^\/]+\/(public|client)/)) {
     res.redirect('/' + apps.getCurrent() + '/client/');
   } else {
     next();
