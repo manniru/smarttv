@@ -1,7 +1,7 @@
 var router = require('express').Router();
 
 router.post('/', function(req, res) {
-  require('../webapp').sendInput(req.body);
+  require('../webapp').input(req.body);
   res.sendStatus(201);
 });
 
