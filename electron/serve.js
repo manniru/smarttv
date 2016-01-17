@@ -33,9 +33,10 @@ router.use(function(req, res, next) {
     var name = match[1];
     if (apps.get(name)) {
       if (apps.getCurrent() !== name) {
-        webapp.showApp(name);
+        webapp.showApp(name, next);
+      } else {
+        next();
       }
-      next();
     } else {
       res.sendStatus(404);
     }

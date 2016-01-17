@@ -53,10 +53,15 @@ function send() {
   mainWindow.webContents.send.apply(mainWindow.webContents, arguments);
 }
 
-function showApp(app) {
+function showApp(app, cb) {
   apps.setCurrent(app);
   mainWindow.loadURL(
     apps.get(app).url ||
     'file://' + apps.dir + '/' +  app  + '/index.html'
   );
+  if (typeof cb === 'function') {
+    mainWindow.webContents.on('did-stop-loading', function() {
+      cb();
+    });
+  }
 }
