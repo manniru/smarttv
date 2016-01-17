@@ -25,7 +25,7 @@ module.exports = function(app, server) {
     clients[socket.id] = socket;
 
     socket.on('message', function(message) {
-      webapp.send('message', message);
+      webapp.send('message', socket.id, message);
     });
 
     socket.on('disconnect', function() {
