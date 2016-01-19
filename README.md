@@ -29,7 +29,7 @@ To start, go back to the SmartTv folder and run
 
     npm start
 
-You can use your mobile or your browser to use SmartTv, just going to the
+You can use your mobile or your browser as remote devices, just going to the
 address where the process is running on, e.g.:
 
     192.168.1.53:8000
@@ -54,12 +54,12 @@ is:
 index.html in the root folder is the web application that will be run on the
 SmartTv, while index.html in client folder will be run on your device.
 
-The 2 applications are strictly related: when trying to open the client app
+The two applications are strictly related: when trying to open the client app
 (http://APP_IP:PORT/APPNAME), Electron will load the server one. If you want to
-provide files to the outside (accessible without loading the app), you ca use
+provide files to the outside (accessible without loading the app), you can use
 the public/ folder (http://APP_IP:PORT/APPNAME/public/).
 
-**smarttv.json** it's the file that will be read by the SmartTv. It might have
+**smarttv.json** it's the file that will be read by the SmartTv. It should have
 a structure like this:
 
     {
@@ -96,7 +96,7 @@ variable `smarttv`.
   The *cb* function will be called with the object of the message as first
   parameter.
 - **smarttv.getApps(cb)**: get the list of installed apps from the server and
-  run the `cb` function with the list as first parameter.
+  run the *cb* function with the list as first parameter.
 - **smarttv.showApp(appName)**: redirect the browser to the requested apps,
   causing Electron to load the new app on the tv.
 - **smarttv.pressKey(keyCode)**: make Electron emulate a keyPress on the tv app
