@@ -25,8 +25,15 @@ SmartTv will get all the available apps from the directory ~/.smarttv/apps:
     git clone https://github.com/mariolamacchia/smarttv-menu
     # clone all the other apps you're interested in
 
+Install dependencies for each app (sorry, i'm working on automizing app
+installing):
+
+    cd <app folder>
+    npm install && bower install
+
 To start, go back to the SmartTv folder and run
 
+    npm install
     npm start
 
 You can use your mobile or your browser as remote devices, just going to the
@@ -82,7 +89,7 @@ SmartTv functionalities. Here is the doc related to those libraries:
 ### Remote device API:
 
 You can get the lib from http://APP_IP:PORT/smarttv.js. It will set a global
-variable `smarttv`.
+variable `smarttv`. It requires jQuery and socket.io to be present.
 
 - **smarttv.send(obj)**: send an asynchronous message containing *obj* to the
   electron app.
