@@ -33,6 +33,11 @@ module.exports = function(app, server) {
       socket.emit('apps', apps.list);
     });
 
+    socket.on('input', function(obj) {
+      console.log('FIRED2');
+      webapp.input(obj);
+    });
+
     socket.on('disconnect', function() {
       webapp.send('disconnect', socket.id);
     });

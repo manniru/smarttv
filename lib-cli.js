@@ -53,13 +53,9 @@
   };
 
   function sendEvent(type, key) {
-    $.ajax('/api/inputs', {
-      method: 'POST',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        type: type,
-        keyCode: key
-      })
+    socket.emit('input', {
+      type: type,
+      keyCode: key
     });
   }
 
