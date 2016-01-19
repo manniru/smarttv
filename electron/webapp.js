@@ -46,7 +46,6 @@ exports.input = input;
 exports.send = send;
 
 function input() {
-  console.log('FIRED1');
   mainWindow.webContents.sendInputEvent.apply(mainWindow.webContents, arguments);
 }
 

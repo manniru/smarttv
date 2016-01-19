@@ -34,7 +34,6 @@ module.exports = function(app, server) {
     });
 
     socket.on('input', function(obj) {
-      console.log('FIRED2');
       webapp.input(obj);
     });
 
