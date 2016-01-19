@@ -11,22 +11,15 @@
     return smarttv;
   };
   smarttv.on = function(c, fn) {
-    if (c === 'ready') {
-      return smarttv.ready(fn);
-    }
     socket.on(c, fn);
-    return smarttv;
-  };
-  smarttv.ready = function(fn) {
-    $('body').on('smarttv-ready', fn);
     return smarttv;
   };
 
   // Apps
-  $.get('/api/apps', function(apps) {
-    smarttv.apps = apps;
-    $('body').trigger('smarttv-ready');
-  });
+  smarttv.getApps = function(fn) {
+    socket.emit('apps');
+    socket.on('apps', fn);
+  };
   smarttv.showApp = function(app) {
     window.location.href = '/' + app;
   };

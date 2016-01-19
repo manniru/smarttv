@@ -1,6 +1,7 @@
 module.exports = function(app, server) {
   var io = require('socket.io')(server);
   var webapp = require('./webapp');
+  var apps = require('../apps');
   var clients = {};
 
   try {
@@ -26,6 +27,10 @@ module.exports = function(app, server) {
 
     socket.on('message', function(message) {
       webapp.send('message', socket.id, message);
+    });
+
+    socket.on('apps', function() {
+      socket.emit('apps', apps.list);
     });
 
     socket.on('disconnect', function() {
