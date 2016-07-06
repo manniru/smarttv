@@ -1,2 +1,1 @@
-require('./electron');
-require('./apps');
+require('./server');
