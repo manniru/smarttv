@@ -5,7 +5,7 @@
   "main": "lib.js",
   "dependencies": {
     "body-parser": "^1.14.2",
-    "electron-prebuilt": "^0.36.1",
+    "electron-prebuilt": "^1.2.0",
     "express": "^4.13.3",
     "socket.io": "^1.0.0"
   },
@@ -14,9 +14,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "electron electron/index.js",
-    "api": "node electron/index.js",
-    "help": "node electron/help.js"
+    "start": "electron index.js",
+    "api": "node index.js",
+    "help": "node help.js"
   },
   "repository": {
     "type": "git",
